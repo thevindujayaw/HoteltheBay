@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<title>Hotel Website</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+        body {
+            
+         font-family: 'Poppins', 'Segoe UI', sans-serif;
+         }
+
+        
+         
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+   
+
+        .section-subtitle {
+            text-align: center;
+            color: #777;
+            font-size: 0.9em;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            color: #222;
+            margin-bottom: 40px;
+           
+        }
+
+        /* Services Section */
+        .services-section {
+            background-color: #fff;
+            padding: 50px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .service-item {
+            background-color: #fff;
+            padding: 30px 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+        }
+
+        .service-item .icon { /* Using Font Awesome, adjust if using <img> */
+            font-size: 2.5em;
+            color: #d4af37;
+            margin-bottom: 15px;
+        }
+
+        .service-item h3 {
+            font-size: 1.2em;
+            color: #333;
+            margin-bottom: 0;
+        }
+
+        /* Contact Us Section */
+        .contact-us-section {
+            background-image: url('https://images.pexels.com/photos/3755556/pexels-photo-3755556.jpeg?auto=compress&cs=tinysrgb&w=1200'); /* Replace */
+            background-size: cover;
+            background-position: center;
+            padding: 80px 0;
+            text-align: center;
+            color: #fff;
+            position: relative;
+        }
+
+        .contact-us-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .contact-us-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-us-section .section-title {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .contact-us-section p {
+            
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .contact-button {
+            background-color: transparent;
+            color: #fff;
+            border: 2px solid #fff;
+            padding: 12px 25px;
+            text-decoration: none;
+            font-size: 1em;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .contact-button:hover {
+            background-color: #fff;
+            color: #333;
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            background-color: #fff;
+            padding: 50px 0;
+        }
+
+        .testimonials-section .section-title {
+            margin-bottom: 20px;
+        }
+
+        .rating {
+            text-align: center;
+            margin-bottom: 30px; /* Reduced margin for testimonial cards */
+        }
+
+        .rating .stars {
+            color: #d4af37;
+            font-size: 1.5em;
+            margin-bottom: 5px;
+        }
+        .rating .stars .empty-star {
+            color: #ccc;
+        }
+
+        .rating .score {
+            font-size: 1.2em;
+            color: #555;
+        }
+
+        .testimonial-cards-container {
+            display: flex;
+            gap: 30px;
+            justify-content: center; /* Center cards if fewer than can fit */
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+            margin-bottom: 30px;
+        }
+
+        .testimonial-card {
+            background-color: #f9f9f9; /* Light grey background for cards */
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 25px;
+            width: calc(50% - 45px); /* Two cards per row, accounting for gap and padding */
+            max-width: 450px; /* Max width for a card */
+            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+            position: relative;
+        }
+
+        .testimonial-card .quote-icon {
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            font-size: 3em; /* Large quote icon */
+            color: #e0e0e0; /* Light grey for the quote */
+            opacity: 0.7;
+        }
+
+        .testimonial-card p.testimonial-text {
+            font-size: 0.95em;
+            line-height: 1.6;
+            color: #555;
+            margin-top: 30px; /* Space for quote icon */
+            margin-bottom: 20px;
+        }
+
+        .testimonial-card .reviewer-name {
+            
+            color: #333;
+            margin-bottom: 3px;
+        }
+
+        .testimonial-card .reviewer-title {
+            font-size: 0.85em;
+            color: #777;
+        }
+
+        .testimonial-slider-dots {
+            text-align: center;
+        }
+
+        .testimonial-slider-dots .dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: #ccc;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer; /* Indicates they are clickable */
+        }
+
+        .testimonial-slider-dots .dot.active {
+            background-color: #d4af37; /* Active dot color */
+        }
+
+        /* Footer Section */
+        .footer {
+            background-color: #222; /* Dark background for footer */
+            color: #ccc; /* Light grey text */
+            padding: 60px 0 20px; /* More padding at top, less at bottom */
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo-area .logo-text {
+            font-size: 1.8em;
+            
+            color: #fff;
+            margin-bottom: 5px;
+        }
+        .footer-logo-area .logo-subtext {
+            font-size: 0.9em;
+            color: #d4af37; /* Gold accent */
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .footer-logo-area p {
+            font-size: 0.9em;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            max-width: 300px; /* Limit width of this paragraph */
+        }
+
+        .footer-social-icons a {
+            color: #ccc;
+            margin-right: 15px;
+            font-size: 1.3em;
+            transition: color 0.3s ease;
+        }
+        .footer-social-icons a:hover {
+            color: #d4af37; /* Gold on hover */
+        }
+
+        .footer-column h4 {
+            font-size: 1.2em;
+            color: #fff;
+            margin-bottom: 20px;
+            text-transform: capitalize; /* Matches "Quicklinks" and "Contacts" */
+        }
+
+        .footer-contact-list li,
+        .footer-quicklinks-list li {
+            list-style: none;
+            margin-bottom: 12px;
+        }
+
+        .footer-contact-list li i {
+            margin-right: 10px;
+            color: #d4af37; /* Gold icons */
+            width: 20px; /* Align text nicely */
+        }
+
+        .footer-quicklinks-list a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-quicklinks-list a:hover {
+            color: #d4af37;
+        }
+
+        .footer-bottom-bar {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444; /* Separator line */
+            font-size: 0.85em;
+        }
+
+        .footer-bottom-bar a {
+            color: #d4af37; /* Gold for the link */
+            text-decoration: none;
+        }
+        .footer-bottom-bar a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive adjustments for testimonial cards */
+        @media (max-width: 768px) {
+            .testimonial-card {
+                width: calc(100% - 30px); /* Full width on smaller screens, consider margin */
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .testimonial-cards-container {
+                gap: 20px; /* Reduce gap on smaller screens */
+            }
+        }
+        @media (max-width: 600px) {
+             .footer-content {
+                grid-template-columns: 1fr; /* Stack footer columns on small screens */
+             }
+             .footer-logo-area, .footer-column {
+                 text-align: center; /* Center text in stacked columns */
+             }
+             .footer-logo-area p {
+                 margin-left: auto;
+                 margin-right: auto;
+             }
+             .footer-contact-list li i {
+                width: auto; /* Reset fixed width for icons if text is centered */
+             }
+        }
+ .slide {
+    position: absolute;
+    inset: 0;
+    /* z-index: -1; was here, but not strictly necessary if parent .absolute has no z-index or lower than overlay */
+    /* The slides are siblings, their stacking order is controlled by opacity and animation timing */
+  }
+
+  @keyframes zoomFade {
+    0% {
+      opacity: 0;
+      transform: scale(1);
+    }
+    5% {
+      opacity: 1;
+    }
+    85% {
+      transform: scale(1.1);
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1.1);
+    }
+  }
+
+  .animate-zoom {
+    /* VVV THIS IS THE LINE TO CHANGE VVV */
+    animation: zoomFade 6s infinite ease-in-out; /* Changed 9s to 3s */
+    /* ^^^ THIS IS THE LINE TO CHANGE ^^^ */
+  }
+
+  .about-section {
+  padding: 50px;
+}
+
+.about-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  max-width: 1200px;
+  margin: auto;
+  flex-wrap: wrap;
+}
+
+.about-image {
+  position: relative;
+  flex: 1;
+  min-width: 300px;
+}
+
+.about-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.experience-box {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background-color: white;
+  padding: 15px 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.experience-box h2 {
+  font-size: 2rem;
+  margin-bottom: 5px;
+}
+
+.about-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.subtitle {
+  color: goldenrod;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.about-text h1 {
+  font-size: 2.8rem;
+  line-height: 1.3;
+  margin-bottom: 20px;
+}
+
+.description {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 30px;
+  max-width: 500px;
+}
+
+.btn {
+  background-color: #2b2b2b;
+  color: white;
+  &:hover {
+    background-color: #aba111;
+  }
+  padding: 12px 24px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 3px;
+  
+}
+.image-slider {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.image-slider .slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.image-slider .slide.active {
+  opacity: 1;
+}
+
+.img-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  padding: 5px 10px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.img-nav.prev-img {
+  left: 10px;
+}
+
+.img-nav.next-img {
+  right: 10px;
+}
+ .room-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .room-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin: 20px;
+            width: 300px;
+            overflow: hidden; /* Added to contain the sliding images */
+            position: relative;
+        }
+        .room-image {
+            /* width: 100%;  Removed, will be set in the slider */
+            border-radius: 8px 8px 0 0;
+            /* overflow: hidden;  Removed, handled in .room-card */
+            position: relative; /* Make sure this is relative for absolute positioning of slides */
+            height: 200px; /* Added a fixed height for the slider */
+        }
+
+        .room-image img {
+            /* width: 100%; Removed, set in slider-inner */
+            /* border-radius: 8px 8px 0 0; Removed, handled by .room-card */
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            height: 100%; /* Ensure images fill the height of the container */
+            object-fit: cover; /* Maintain aspect ratio and cover the entire container */
+        }
+
+        .room-image img.active {
+            opacity: 1;
+        }
+
+
+         @keyframes fadeSlide {
+    0% { opacity: 0; transform: scale(1); }
+    8% { opacity: 1; transform: scale(1); }
+    25% { opacity: 1; transform: scale(1.08); } /* zoom in slightly */
+    33% { opacity: 0; transform: scale(1.08); }
+    100% { opacity: 0; transform: scale(1); }
+  }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    animation-name: fadeSlide;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-duration: 36s;
+  }
+
+  .slide:nth-child(1) { animation-delay: 0s; }
+  .slide:nth-child(2) { animation-delay: 3s; }
+  .slide:nth-child(3) { animation-delay: 6s; }
+  .slide:nth-child(4) { animation-delay: 9s; }
+  .slide:nth-child(5) { animation-delay: 12s; }
+  .slide:nth-child(6) { animation-delay: 15s; }
+  .slide:nth-child(7) { animation-delay: 18s; }
+  .slide:nth-child(8) { animation-delay: 21s; }
+  .slide:nth-child(9) { animation-delay: 24s; }
+  .slide:nth-child(10) { animation-delay: 27s; }
+  .slide:nth-child(11) { animation-delay: 30s; }
+  .slide:nth-child(12) { animation-delay: 33s; }
+
+        .room-image {
+            display: flex; /* Use flexbox for horizontal arrangement of images */
+            transition: transform 0.5s ease-in-out; /* Smooth transition between slides */
+            width: 300%; /* 3 images, so 300% */
+            height: 200px;
+        }
+
+        .room-image img{
+           width: 33.33%;
+           height: 100%;
+           object-fit: cover;
+        }
+
+        .room-image.slide {
+            animation: slide 9s infinite; /* 3 images x 3s each */
+        }
+
+
+        .room-details {
+            padding: 20px;
+        }
+        .room-details h2 {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .room-details p {
+            font-size: 0.8rem;
+            color: #555;
+            margin-bottom: 10px;
+        }
+        .room-features {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .room-features span {
+            margin-right: 10px;
+            font-size: 0.7rem;
+            color: #666;
+        }
+        .starting-price {
+            font-size: 0.9rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+  
+    
+/* Slide-up animation */
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.slide-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: transform 3.5s cubic-bezier(0.23, 1, 0.32, 1), opacity 2.0s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.slide-up.animate {
+  animation: slideUp 1s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+</style>
+</head>
+<body class="bg-gray-100">
+<!-- Overlay -->
+<div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+
+<!-- Header -->
+<header class="bg-gray-900 text-white shadow-md fixed top-0 left-0 right-0 z-50">
+  <div class="container mx-auto px-4 flex justify-between items-center py-4">
+    <div class="text-2xl font-semibold text-yellow-500">The Bey</div>
+
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex space-x-6">
+      <a href="#home" class="hover:text-yellow-500">Home</a>
+      <a href="#about" class="hover:text-yellow-500">About Us</a>
+      <a href="#accommodation" class="hover:text-yellow-500">Accommodation</a>
+      <a href="#la-vista" class="hover:text-yellow-500">La Vista</a>
+      <a href="#contact" class="hover:text-yellow-500">Contact Us</a>
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <div class="md:hidden">
+      <button id="menu-toggle" class="text-white text-2xl focus:outline-none">☰</button>
+    </div>
+  </div>
+
+  <!-- Mobile Nav -->
+  <div id="mobile-menu" class="fixed top-0 right-0 w-3/4 h-full bg-gray-900 text-white p-6 transform translate-x-full transition-transform duration-300 z-50 md:hidden">
+    <button id="menu-close" class="text-white text-2xl absolute top-4 right-4">✕</button>
+    <nav class="flex flex-col space-y-6 mt-16">
+      <a href="#home" class="hover:text-yellow-500">Home</a>
+      <a href="#about" class="hover:text-yellow-500">About Us</a>
+      <a href="#accommodation" class="hover:text-yellow-500">Accommodation</a>
+      <a href="#la-vista" class="hover:text-yellow-500">La Vista</a>
+      <a href="#contact" class="hover:text-yellow-500">Contact Us</a>
+    </nav>
+  </div>
+</header>
+
+<section class="relative h-screen overflow-hidden" id="home">
+<div class="absolute inset-0">
+<div class="slide bg-cover bg-center opacity-0 animate-zoom" style="background-image: url('https://images.pexels.com/photos/2417842/pexels-photo-2417842.jpeg?auto=compress&cs=tinysrgb&w=1200'); animation-delay: 0s;"></div>
+<div class="slide bg-cover bg-center opacity-0 animate-zoom" style="background-image: url('https://images.pexels.com/photos/1001965/pexels-photo-1001965.jpeg?auto=compress&cs=tinysrgb&w=1200'); animation-delay: 6s;"></div>
+<div class="slide bg-cover bg-center opacity-0 animate-zoom" style="background-image: url('https://images.pexels.com/photos/2351290/pexels-photo-2351290.jpeg?auto=compress&cs=tinysrgb&w=1200'); animation-delay: 18s;"></div>
+<div class="slide bg-cover bg-center opacity-0 animate-zoom" style="background-image: url('https://images.pexels.com/photos/460537/pexels-photo-460537.jpeg?auto=compress&cs=tinysrgb&w=1200'); animation-delay: 36s;"></div>
+<div class="slide bg-cover bg-center opacity-0 animate-zoom" style="background-image: url('https://images.pexels.com/photos/2086676/pexels-photo-2086676.jpeg?auto=compress&cs=tinysrgb&w=1200'); animation-delay: 15s;"></div>
+<div class="slide bg-cover bg-center opacity-0 animate-zoom" style="background-image: url('https://images.pexels.com/photos/2873951/pexels-photo-2873951.jpeg?auto=compress&cs=tinysrgb&w=1200'); animation-delay: 24s;"></div>
+<div class="slide bg-cover bg-center opacity-0 animate-zoom" style="background-image: url('https://images.pexels.com/photos/189293/pexels-photo-189293.jpeg?auto=compress&cs=tinysrgb&w=1200'); animation-delay: 30s;"></div>
+<div class="slide bg-cover bg-center opacity-0 animate-zoom" style="background-image: url('https://images.unsplash.com/photo-1495365200479-c4ed1d35e1aa?w=900&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGhvdGVsfGVufDB8fDB8fHww'); animation-delay: 36s;"></div>
+<div class="slide bg-cover bg-center opacity-0 animate-zoom" style="background-image: url('https://plus.unsplash.com/premium_photo-1661964402307-02267d1423f5?w=900&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8aG90ZWx8ZW58MHx8MHx8fDA%3D'); animation-delay: 42s;"></div>
+<div class="slide bg-cover bg-center opacity-0 animate-zoom" style="background-image: url('https://images.unsplash.com/photo-1582719508461-905c673771fd?w=900&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGhvdGVsfGVufDB8fDB8fHww'); animation-delay: 48s;"></div>
+</div>
+<div class="absolute inset-0 bg-black opacity-40 z-0"></div>
+<div class="relative z-10 flex items-center justify-center h-full text-center text-white">
+<div>
+<h1 class="text-4xl md:text-6xl slide-up">
+        Guaranteed Sea-View <br/> From Every Room
+      </h1>
+<p class="mt-5 text-lg mb-7 slide-up">GET 10% OFF WEBSITE BOOKINGS FOR ALL ROOMS</p>
+<a class="mt-4 bg-yellow-500 hover:bg-yellow-600 text-gray-800 font-semibold py-3 px-6 rounded-full transition duration-300" href="https://www.booking.com/hotel/lk/the-bay.en-gb.html?aid=311984&amp;label=the-bay-IZtX7qc5ubAm5IM_tKTZfQS625030156005%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-798686803579%3Alp9199150%3Ali%3Adec%3Adm%3Appccp%3DUmFuZG9tSVYkc2RlIyh9YbSsBl3MCvHsD8UKUHIRFxY&amp;sid=b2859d5534ad84503415ae511926daf7&amp;dest_id=900050039&amp;dest_type=city&amp;dist=0&amp;group_adults=2&amp;group_children=0&amp;hapos=1&amp;hpos=1&amp;no_rooms=1&amp;req_adults=2&amp;req_children=0&amp;room1=A%2CA&amp;sb_price_type=total&amp;sr_order=popularity&amp;srepoch=1747054469&amp;srpvid=17025abe984a0758&amp;type=total&amp;ucfs=1&amp;">
+        Book Now
+      </a>
+</div>
+</div>
+</section>
+<!-- <section id="book" class="bg-white py-10 md:py-16">
+        <div class="container mx-auto">
+            <div class="bg-gray-50 rounded-lg shadow-md p-6 md:p-8 flex flex-col md:flex-row gap-4 md:gap-6 items-center justify-center">
+                <div class="flex flex-col md:flex-row gap-2 md:gap-4">
+                    <div class="flex flex-col">
+                        <label for="nationality" class="text-sm font-medium text-gray-700">Nationality</label>
+                        <select id="nationality" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                            <option>Please select Nationality</option>
+                            <option>Sri Lankan</option>
+                            <option>Indian</option>
+                            <option>American</option>
+                            <option>British</option>
+                        </select>
+                    </div>
+                    <div class="flex flex-col">
+                        <label for="check-in" class="text-sm font-medium text-gray-700">Check In</label>
+                        <input type="date" id="check-in" class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                    </div>
+                    <div class="flex flex-col">
+                        <label for="check-out" class="text-sm font-medium text-gray-700">Check Out</label>
+                        <input type="date" id="check-out" class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                    </div>
+                </div>
+                <button class="bg-yellow-500 hover:bg-yellow-600 text-gray-800 font-semibold py-3 px-6 rounded-full transition duration-300 text-base">Book Now</button>
+            </div>
+        </div>
+    </section> -->
+<section class="about-section slide-up">
+<div class="about-container slide-up">
+<div class="about-image ">
+<img alt="Hotel Room" class="slide-up" src="https://images.unsplash.com/photo-1508424757105-b6d5ad9329d0?w=900&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8cmVzdGF1cmFudHxlbnwwfHwwfHx8MA%3D%3D"/>
+<div class="experience-box">
+<h2 class="slide-up">6+</h2>
+<p class="slide-up">Years Experience</p>
+</div>
+</div>
+<div class="about-text slide-up">
+<p class="subtitle slide-up">ABOUT US</p>
+<h1 class="slide-up">Experience <br/>contemporary<br/>luxury.</h1>
+<p class="description slide-up">
+          Whether you are a business or a leisure traveler, The Ocean Colombo has the perfect offering to make your stay memorable.
+        </p>
+<a class="btn" href="#">DISCOVER MORE</a>
+</div>
+</div>
+</section>
+<!-- <section id="promotion" class="bg-gray-100 py-16 md:py-24">
+        <div class="container mx-auto">
+            <div class="bg-yellow-100 rounded-lg p-6 md:p-8 text-center">
+                <h2 class="text-3xl md:text-4xl font-semibold text-yellow-800 mb-4">Local Promotion</h2>
+                <p class="text-lg text-yellow-700 mb-6">Valid till 30th September 2023</p>
+            </div>
+        </div>
+    </section> -->
+<section class="text-center py-12">
+<h2 class="text-yellow-600 tracking-widest text-sm uppercase mb-2 slide-up">Our Accommodation</h2>
+<h1 class="text-4xl slide-up">The Most Comfortable Sea-View Rooms</h1>
+</section>
+<section class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto px-4 pb-16 items-stretch">
+
+<!-- The Elite Room -->
+<div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col h-[600px]">
+  <img alt="Room" class="w-full h-64 object-cover" src="https://images.pexels.com/photos/262048/pexels-photo-262048.jpeg?auto=compress&cs=tinysrgb&w=1200"/>
+  <div class="p-6 bg-zinc-900 text-white flex flex-col justify-between h-full">
+    <div>
+      <h2 class="text-2xl pace-y-4 slide-up">The Charm</h2>
+      <p class="mt-2 text-sm text-gray-400 pace-y-4 slide-up">Deluxe Rooms</p>
+      <p class="mt-6 text-yellow-400 mt-2 pace-y-4 slide-up">Starting from LKR 17,000</p>
+      <div class="mt-3 flex items-center gap-10 text-sm  pace-y-4 slide-up">
+        <span>🛏️ 1 Bed</span>
+        <span>🛁 1 Bath</span>
+      </div>
+      <p class="mt-10 text-sm text-gray-300 slide-up">
+        Comfortable, compact and smart space and premium twin beds. The décor is contemporary and elegant with a colourful palette of white, beige, brown and hues of Mahogany woodwork and rich natural timber flooring.
+      </p>
+    </div>
+    <a class="inline-block mt-4 text-yellow-400 hover:underline" href="#">BOOK NOW →</a>
+  </div>
+</div>
+<!-- The Charm Room -->
+<div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col h-[600px] slide-up">
+  <img alt="Room" class="w-full h-64 object-cover" src="https://images.pexels.com/photos/262048/pexels-photo-262048.jpeg?auto=compress&cs=tinysrgb&w=1200"/>
+  <div class="p-6 bg-zinc-900 text-white flex flex-col justify-between h-full">
+    <div>
+      <h2 class="text-2xl pace-y-4 slide-up">The Charm</h2>
+      <p class="mt-2 text-sm text-gray-400 pace-y-4 slide-up ">Deluxe Rooms</p>
+      <p class="mt-6 text-yellow-400 mt-2 pace-y-4 slide-up">Starting from LKR 17,000</p>
+      <div class="mt-3 flex items-center gap-10 text-sm  pace-y-4 slide-up">
+        <span>🛏️ 1 Bed</span>
+        <span>🛁 1 Bath</span>
+      </div>
+      <p class="mt-10 text-sm text-gray-300 slide-up">
+        Comfortable, compact and smart space and premium twin beds. The décor is contemporary and elegant with a colourful palette of white, beige, brown and hues of Mahogany woodwork and rich natural timber flooring.
+      </p>
+    </div>
+    <a class="inline-block mt-4 text-yellow-400 hover:underline" href="#">BOOK NOW →</a>
+  </div>
+</div>
+</section>
+<section class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto px-4 pb-16 slide-up">
+<!-- The Elite Room -->
+<div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col h-[600px] slide-up">
+  <img alt="Room" class="w-full h-64 object-cover" src="https://images.pexels.com/photos/262048/pexels-photo-262048.jpeg?auto=compress&cs=tinysrgb&w=1200"/>
+  <div class="p-6 bg-zinc-900 text-white flex flex-col justify-between h-full">
+    <div>
+      <h2 class="text-2xl pace-y-4 slide-up">The Charm</h2>
+      <p class="mt-2 text-sm text-gray-400 pace-y-4 slide-up">Deluxe Rooms</p>
+      <p class="mt-6 text-yellow-400 mt-2 pace-y-4  slide-up">Starting from LKR
+         17,000</p>
+      <div class="mt-3 flex items-center gap-10 text-sm  pace-y-4 slide-up">
+        <span>🛏️ 1 Bed</span>
+        <span>🛁 1 Bath</span>
+      </div>
+      <p class="mt-10 text-sm text-gray-300 slide-up">
+        Comfortable, compact and smart space and premium twin beds. The décor is contemporary and elegant with a colourful palette of white, beige, brown and hues of Mahogany woodwork and rich natural timber flooring.
+      </p>
+    </div>
+    <a class="inline-block mt-4 text-yellow-400 hover:underline slide-up" href="#">BOOK NOW →</a>
+  </div>
+</div>
+<!-- The Charm Room -->
+<div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col h-[600px] slide-up">
+  <img alt="Room" class="w-full h-64 object-cover" src="https://images.pexels.com/photos/262048/pexels-photo-262048.jpeg?auto=compress&cs=tinysrgb&w=1200"/>
+  <div class="p-6 bg-zinc-900 text-white flex flex-col justify-between h-full">
+    <div>
+      <h2 class="text-2xl pace-y-4 slide-up">The Charm</h2>
+      <p class="mt-2 text-sm text-gray-400 pace-y-4 slide-up">Deluxe Rooms</p>
+      <p class="mt-6 text-yellow-400 mt-2 pace-y-4 slide-up">Starting from LKR 17,000</p>
+      <div class="mt-3 flex items-center gap-10 text-sm  pace-y-4">
+        <span>🛏️ 1 Bed</span>
+        <span>🛁 1 Bath</span>
+      </div>
+      <p class="mt-10 text-sm text-gray-300 slide-up">
+        Comfortable, compact and smart space and premium twin beds. The décor is contemporary and elegant with a colourful palette of white, beige, brown and hues of Mahogany woodwork and rich natural timber flooring.
+      </p>
+    </div>
+    <a class="inline-block mt-4 text-yellow-400 hover:underline" href="#">BOOK NOW →</a>
+  </div>
+</div>
+</section>
+<!-- Hero Section -->
+<section class="relative h-screen bg-cover bg-center slide-up" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e'); ">
+<div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-center text-white px-4">
+<h1 class="text-yellow-400 text-lg tracking-widest font-semibold mb-2 slide-up">THE OCEAN COLOMBO</h1>
+<h2 class="text-white text-5xl sm:text-6xl leading-tight font-serif slide-up">
+       Guaranteed <br>
+      Sea-View <br>
+      From Every Room
+      </br></br></h2>
+<p class="text-sm mt-4 slide-up">GET 10% OFF WEBSITE BOOKINGS FOR ALL ROOMS</p>
+<!-- Animated Figures (optional) -->
+<div class="mt-10 flex gap-8 text-white">
+<div class="text-center">
+<div class="text-4xl text-yellow-400" data-count-to="20">
+<span id="stat1">0</span><span>+</span>
+</div>
+<div class="text-sm">Rooms</div>
+</div>
+<div class="text-center">
+<div class="text-4xl text-yellow-400" data-count-to="60">
+<span id="stat2">0</span><span>+</span>
+</div>
+<div class="text-sm">Floors</div>
+</div>
+<div class="text-center">
+<div class="text-4xl text-yellow-400" data-count-to="400">
+<span id="stat3">0</span><span>+</span>
+</div>
+<div class="text-sm">Staff</div>
+</div>
+</div>
+</div></section>
+
+ 
+<!-- La Vista Section -->
+ <section class="grid grid-cols-1 md:grid-cols-2 gap-32 items-center max-w-7xl mx-auto px-6 py-16 mb-24 slide-up">
+  <!-- Images Container -->
+  <div class="relative w-full">
+    <!-- Main Image with fixed height -->
+    <img src="https://images.pexels.com/photos/27638171/pexels-photo-27638171/free-photo-of-bedroom-in-cabin.jpeg?auto=compress&cs=tinysrgb&w=1200" 
+         alt="Main Image" 
+         class="shadow-lg w-full h-[500px] object-cover ">
+
+    <!-- Top-Left Overlay Image -->
+    <img src="https://images.pexels.com/photos/1283219/pexels-photo-1283219.jpeg" 
+         alt="Overlay 1" 
+         class="absolute top-[-40px] left-[-40px] w-36 h-36 object-cover  shadow-md  z-10 slide-up">
+
+    <!-- Bottom-Right Overlay Image -->
+    <img src="https://images.pexels.com/photos/3184192/pexels-photo-3184192.jpeg" 
+         alt="Overlay 2" 
+         class="absolute bottom-[-30px] right-[-30px] w-36 h-36 object-cover  shadow-md  z-10 slide-up">
+  </div>
+
+  <!-- Text Content -->
+  <div class="text-left">
+    <p class="text-yellow-500 uppercase tracking-widest slide-up">Rooftop Pub</p>
+    <h2 class="text-4xl mb-4 slide-up">La Vista</h2>
+    <p class="text-gray-700 mb-2 slide-up">
+      La Vista offers excellent Latin American cuisine. For Reservations Call
+    </p>
+    <p class="text-red-500 font-semibold mb-6 slide-up">077 556 6126</p>
+    <a href="#" class="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-6 py-3 rounded-md shadow-md transition-all duration-200 slide-up">
+      Reservations
+    </a>
+  </div>
+</section>
+<!-- The Mint Restaurant Section -->
+ <section class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center max-w-7xl mx-auto px-6 py-16 mb-24 slide-up">
+  <!-- Left Text Content -->
+  <div class="text-left">
+    <p class="text-yellow-500 uppercase tracking-widest text-sm mb-2 slide-up">The Mint Restaurant</p>
+    <h2 class="text-4xl mb-4 leading-snug slide-up">Bringing Class To<br />The Cuisine</h2>
+    <p class="text-gray-700 mb-6 slide-up">
+      The Ocean Colombo offers excellent cuisine and wine. Our guests can enjoy their meals in the ground floor restaurant with a wonderful view of the Indian Ocean.
+    </p>
+    <a href="#" class="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-6 py-3 rounded-md shadow-md transition-all duration-200 slide-up">
+      See Our Menu
+    </a>
+  </div>
+
+  <!-- Right Image Section -->
+  <div class="relative w-full slide-up">
+    <!-- Main Image (with fixed height) -->
+    <img src="https://images.pexels.com/photos/6394710/pexels-photo-6394710.jpeg?auto=compress&cs=tinysrgb&w=1200" 
+         alt="Main Dish" 
+         class=" shadow-lg w-full h-[500px] object-cover">
+
+    <!-- Top-Right Overlay Image -->
+    <img src="https://images.pexels.com/photos/262959/pexels-photo-262959.jpeg" 
+         alt="Overlay Top" 
+         class="absolute top-[-40px] right-[-40px] w-36 h-36 object-cover shadow-md  z-10 slide-up">
+
+    <!-- Bottom-Left Overlay Image -->
+    <img src="https://images.pexels.com/photos/1600711/pexels-photo-1600711.jpeg" 
+         alt="Overlay Bottom" 
+         class="absolute bottom-[-30px] left-[-30px] w-36 h-36 object-cover  shadow-md  z-10 slide-up">
+  </div>
+</section>
+
+
+<!-- Sea View Spa Section -->
+ <section class="grid grid-cols-1 md:grid-cols-2 gap-32 items-center max-w-7xl mx-auto px-6 py-16 mb-24 slide-up">
+  <!-- Images Container -->
+  <div class="relative w-full">
+    <!-- Main Image with fixed height -->
+    <img src="https://images.pexels.com/photos/7746574/pexels-photo-7746574.jpeg?auto=compress&cs=tinysrgb&w=1200" 
+         alt="Main Image" 
+         class="shadow-lg w-full h-[500px] object-cover ">
+
+    <!-- Top-Left Overlay Image -->
+    <img src="https://images.pexels.com/photos/1283219/pexels-photo-1283219.jpeg" 
+         alt="Overlay 1" 
+         class="absolute top-[-40px] left-[-40px] w-36 h-36 object-cover  shadow-md  z-10 slide-up">
+
+    <!-- Bottom-Right Overlay Image -->
+    <img src="https://images.pexels.com/photos/3184192/pexels-photo-3184192.jpeg" 
+         alt="Overlay 2" 
+         class="absolute bottom-[-30px] right-[-30px] w-36 h-36 object-cover  shadow-md  z-10 slide-up">
+  </div>
+
+  <!-- Text Content -->
+  <div class="text-left slide-up">
+    <p class="text-yellow-500 uppercase tracking-widest slide-up">Rooftop Pub</p>
+    <h2 class="text-4xl mb-4 slide-up">La Vista</h2>
+    <p class="text-gray-700 mb-2 slide-up">
+      La Vista offers excellent Latin American cuisine. For Reservations Call
+    </p>
+    <p class="text-red-500 font-semibold mb-6 slide-up">077 556 6126</p>
+    <a href="#" class="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-6 py-3 rounded-md shadow-md transition-all duration-200 slide-up">
+      Reservations
+    </a>
+  </div>
+</section>
+
+<!-- Banquet Hall Section -->
+  <section class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center max-w-7xl mx-auto px-6 py-16 mb-24 slide-up">
+  <!-- Left Text Content -->
+  <div class="text-left">
+    <p class="text-yellow-500 uppercase tracking-widest text-sm mb-2 slide-up">The Mint Restaurant</p>
+    <h2 class="text-4xl mb-4 leading-snug slide-up">Bringing Class To<br />The Cuisine</h2>
+    <p class="text-gray-700 mb-6 slide-up">
+      The Ocean Colombo offers excellent cuisine and wine. Our guests can enjoy their meals in the ground floor restaurant with a wonderful view of the Indian Ocean.
+    </p>
+    <a href="#" class="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-6 py-3 rounded-md shadow-md transition-all duration-200 slide-up">
+      See Our Menu
+    </a>
+  </div>
+
+  <!-- Right Image Section -->
+  <div class="relative w-full slide-up">
+    <!-- Main Image (with fixed height) -->
+    <img src="https://images.pexels.com/photos/31111375/pexels-photo-31111375/free-photo-of-cozy-lakeview-bedroom-in-moroccan-retreat.jpeg?auto=compress&cs=tinysrgb&w=1200" 
+         alt="Main Dish" 
+         class=" shadow-lg w-full h-[500px] object-cover">
+
+    <!-- Top-Right Overlay Image -->
+    <img src="https://images.pexels.com/photos/262959/pexels-photo-262959.jpeg" 
+         alt="Overlay Top" 
+         class="absolute top-[-40px] right-[-40px] w-36 h-36 object-cover shadow-md  z-10 slide-up">
+
+    <!-- Bottom-Left Overlay Image -->
+    <img src="https://images.pexels.com/photos/1600711/pexels-photo-1600711.jpeg" 
+         alt="Overlay Bottom" 
+         class="absolute bottom-[-30px] left-[-30px] w-36 h-36 object-cover  shadow-md  z-10 slide-up">
+  </div>
+</section>
+
+
+<section class="services-section slide-up">
+<div class="container slide-up">
+<p class="section-subtitle slide-up">Our Services</p>
+<h2 class="section-title slide-up">Luxury at your fingertips</h2>
+<div class="services-grid">
+<div class="service-item slide-up">
+<div class="icon">WiFi</div> <h3 class="slide-up">Unlimited WIFI</h3>
+</div>
+<div class="service-item slide-up">
+<div class="icon">💰</div> <h3 class="slide-up">Currency Exchange</h3>
+</div>
+<div class="service-item slide-up">
+<div class="icon">🧺</div> <h3 class="slide-up">Laundry &amp; Cleaning</h3>
+</div>
+<div class="service-item slide-up">
+<div class="icon">🚗</div> <h3 class="slide-up">Rentals &amp; Airport Hires</h3>
+</div>
+<div class="service-item slide-up">
+<div class="icon">🍴</div> <h3 class="slide-up">Restaurants &amp; Cafe</h3>
+</div>
+<div class="service-item slide-up">
+<div class="icon">🍸</div> <h3 class="slide-up">Sea View Rooftop Bar</h3>
+</div>
+<div class="service-item slide-up">
+<div class="icon">🗣️</div> <h3 class="slide-up">Conference Facilities</h3>
+</div>
+<div class="service-item slide-up">
+<div class="icon">💆</div> <h3 class="slide-up">Spa &amp; Wellness</h3>
+</div>
+</div>
+</div>
+</section>
+<section class="contact-us-section slide-up">
+<div class="contact-us-content container slide-up">
+<h2 class="section-title slide-up">Contact Us</h2>
+<p class="slide-up">If you want to place a booking, know more about the hotel or have any questions, please do not hesitate to contact us!</p>
+<a class="contact-button" href="#">Contact →</a>
+</div>
+</section>
+<section class="testimonials-section bg-gray-100 py-8 md:py-16">
+  <div class="container mx-auto px-4">
+    <p class="text-yellow-400 uppercase tracking-widest mb-2 md:mb-4 text-center md:text-left">Testimonials</p>
+    
+    <h2 class="text-3xl md:text-5xl text-gray-900 font-serif tracking-wider text-center md:text-left">
+      Review From Our Customers
+    </h2>
+    
+    <div class="flex items-center justify-center md:justify-start mb-6 md:mb-8 mt-2 md:mt-4">
+      <div class="text-orange-400 text-lg md:text-xl mr-2">★★★★☆</div>
+      <div class="text-gray-700 text-xs md:text-sm">4.5/5.0</div>
+    </div>
+    
+    <!-- Slider Wrapper -->
+    <div class="relative overflow-hidden mt-8 md:mt-24">
+      <div id="testimonialSlider" class="flex transition-transform duration-700 ease-in-out w-[200%] md:w-[300%]">
+        <!-- Slide 1 -->
+        <div class="flex w-full shrink-0 flex-col md:flex-row gap-4 md:gap-6">
+          <div class="testimonial-card bg-white p-4 md:p-6 shadow-lg w-full md:w-1/2 border-blue-400 transition duration-300 hover:scale-105 hover:bg-blue-100">
+            <div class="text-yellow-500 text-2xl md:text-3xl mb-3 md:mb-4"><i class="fas fa-quote-left"></i></div>
+            <p class="testimonial-text text-gray-600 mb-4">We were here to celebrate our 1st wedding anniversary. Staff is friendly, food is awesome, and the room was neat. Highly recommend!</p>
+            <div class="reviewer-name text-gray-900 text-center md:text-right">Nadee Thakshila</div>
+            <div class="reviewer-title text-sm text-gray-500 text-center md:text-right">Customer</div>
+          </div>
+          
+          <div class="testimonial-card bg-white p-4 md:p-6 shadow-lg w-full md:w-1/2 transition duration-300 hover:scale-105 border-blue-400 hover:bg-blue-100">
+            <div class="text-yellow-500 text-2xl md:text-3xl mb-3 md:mb-4"><i class="fas fa-quote-left"></i></div>
+            <p class="testimonial-text text-gray-600 mb-4">It's very nice, clean and the staff was amazing. Mr. Priyantha gave us great travel advice. Cheers from Canada!</p>
+            <div class="reviewer-name text-gray-900 text-center md:text-right">Giancarlo Cataldo</div>
+            <div class="reviewer-title text-sm text-gray-500 text-center md:text-right">Customer</div>
+          </div>
+        </div>
+        
+        <!-- Slide 2 -->
+        <div class="flex w-full shrink-0 flex-col md:flex-row gap-4 md:gap-6">
+          <div class="testimonial-card bg-white p-4 md:p-6 shadow-lg w-full md:w-1/2 transition duration-300 hover:scale-105 border-blue-400 hover:bg-blue-100">
+            <div class="text-yellow-500 text-2xl md:text-3xl mb-3 md:mb-4"><i class="fas fa-quote-left"></i></div>
+            <p class="testimonial-text text-gray-600 mb-4">Beautiful rooms with a perfect sea view. My favorite part was the rooftop bar every night.</p>
+            <div class="reviewer-name text-gray-900 text-center md:text-right">Dilani Fernando</div>
+            <div class="reviewer-title text-sm text-gray-500 text-center md:text-right">Guest</div>
+          </div>
+          
+          <div class="testimonial-card bg-white p-4 md:p-6 shadow-lg w-full md:w-1/2 transition duration-300 hover:scale-105 border-blue-400 hover:bg-blue-100">
+            <div class="text-yellow-500 text-2xl md:text-3xl mb-3 md:mb-4"><i class="fas fa-quote-left"></i></div>
+            <p class="testimonial-text text-gray-600 mb-4">Amazing stay! Staff was helpful and the breakfast was delicious. Will visit again.</p>
+            <div class="reviewer-name text-gray-900 text-center md:text-right">Kasun Jayasena</div>
+            <div class="reviewer-title text-sm text-gray-500 text-center md:text-right">Traveller</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Navigation Dots -->
+      <div class="testimonial-slider-dots flex justify-center mt-6 md:mt-8 gap-2">
+        <span class="dot w-2 h-2 md:w-3 md:h-3 bg-yellow-500 rounded-full cursor-pointer" data-index="0"></span>
+        <span class="dot w-2 h-2 md:w-3 md:h-3 bg-gray-300 hover:bg-yellow-400 rounded-full cursor-pointer" data-index="1"></span>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<footer class="footer slide-up">
+<div class="container">
+<div class="footer-content">
+<div class="footer-logo-area">
+<div class="logo-text">THE OCEAN</div>
+<span class="logo-subtext">COLOMBO</span>
+<p class="slide-up">Whether you are a business or a leisure traveler, The Ocean Colombo has the perfect offering to make your stay memorable.</p>
+<div class="footer-social-icons">
+<a aria-label="Facebook" href="#"><i class="fab fa-facebook-f"></i></a>
+<a aria-label="Instagram" href="#"><i class="fab fa-instagram"></i></a>
+<a aria-label="Twitter" href="#"><i class="fab fa-twitter"></i></a> </div>
+</div>
+<div class="footer-column footer-contacts">
+<h4 class="slide-up">Contacts</h4>
+<ul class="footer-contact-list">
+<li><i class="fas fa-map-marker-alt"></i> No 40, Melbourne Av, Marine Drive, Colombo 04, Sri Lanka</li>
+<li><i class="fas fa-phone-alt"></i> +94 117 110 100 / +94 776 350 943</li>
+<li><i class="fas fa-envelope"></i> info@theoceancolombo.com</li>
+</ul>
+</div>
+<div class="footer-column footer-quicklinks">
+<h4 class="slide-up">Quicklinks</h4>
+<ul class="footer-quicklinks-list">
+<li><a href="#">Home</a></li>
+<li><a href="#">About Us</a></li>
+<li><a href="#">Accommodation</a></li>
+<li><a href="#">La Vista</a></li>
+<li><a href="#">Contact Us</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="footer-bottom-bar">
+            Copyright © 2023 Ocean Colombo. All rights reserved. | Developed by <a href="#">COLOMBOX</a>
+</div>
+</footer>
+<script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+         <!-- Counter Animation Script -->
+  
+    document.addEventListener("DOMContentLoaded", () => {
+    const counters = [
+      { id: 'stat1', target: 20 },
+      { id: 'stat2', target: 60 },
+      { id: 'stat3', target: 400 }
+    ];
+
+    let counted = false;
+
+    const animateCounters = () => {
+      counters.forEach(counter => {
+        const el = document.getElementById(counter.id);
+        let count = 0;
+        const step = Math.ceil(counter.target / 100);
+
+        const updateCount = () => {
+          if (count < counter.target) {
+            count += step;
+            el.innerText = count > counter.target ? counter.target : count;
+            setTimeout(updateCount, 20);
+          } else {
+            el.innerText = counter.target;
+          }
+        };
+
+        updateCount();
+      });
+    };
+
+    // Scroll trigger using Intersection Observer
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !counted) {
+          animateCounters();
+          counted = true;
+          observer.disconnect(); // only trigger once
+        }
+      });
+    }, { threshold: 0.5 });
+
+    // Observe the parent section containing the stats
+    const statsSection = document.getElementById('stat1')?.closest('section') || document.getElementById('stat1')?.closest('div');
+    if (statsSection) {
+      observer.observe(statsSection);
+    }
+  });
+ 
+    </script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("animate");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.20 });
+
+  document.querySelectorAll(".slide-up").forEach(el => {
+    observer.observe(el);
+  });
+});
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const dots = document.querySelectorAll(".testimonial-slider-dots .dot");
+    const slider = document.getElementById("testimonialSlider");
+
+    dots.forEach(dot => {
+      dot.addEventListener("click", () => {
+        const index = parseInt(dot.getAttribute("data-index"));
+        slider.style.transform = `translateX(-${index * 100}%)`;
+
+        // Update dot styling
+        dots.forEach(d => d.classList.remove("bg-yellow-500"));
+        dots.forEach(d => d.classList.add("bg-yellow-300"));
+        dot.classList.remove("bg-yellow-300");
+        dot.classList.add("bg-yellow-500");
+      });
+    });
+  });
+</script>
+    <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const menuToggle = document.getElementById("menu-toggle");
+    const menuClose = document.getElementById("menu-close");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const overlay = document.getElementById("overlay");
+
+    const openMenu = () => {
+      mobileMenu.classList.remove("translate-x-full");
+      overlay.classList.remove("hidden");
+    };
+
+    const closeMenu = () => {
+      mobileMenu.classList.add("translate-x-full");
+      overlay.classList.add("hidden");
+    };
+
+    menuToggle.addEventListener("click", openMenu);
+    menuClose.addEventListener("click", closeMenu);
+    overlay.addEventListener("click", closeMenu);
+
+    document.querySelectorAll("#mobile-menu a").forEach(link => {
+      link.addEventListener("click", closeMenu);
+    });
+  });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const slider = document.getElementById('testimonialSlider');
+      const dots = document.querySelectorAll('.dot');
+      
+      dots.forEach(dot => {
+        dot.addEventListener('click', function() {
+          const slideIndex = this.getAttribute('data-index');
+          const slideWidth = 100; // percentage
+          
+          // Move slider to the selected slide
+          slider.style.transform = `translateX(-${slideIndex * slideWidth}%)`;
+          
+          // Update active dot
+          dots.forEach(d => d.classList.replace('bg-yellow-500', 'bg-gray-300'));
+          this.classList.replace('bg-gray-300', 'bg-yellow-500');
+        });
+      });
+    });
+  </script>
+ 
+
+</body>
+</html>
